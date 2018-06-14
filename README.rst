@@ -30,7 +30,7 @@
 bobtemplates.cs
 ==================
 
-``bobtemplates.cs`` provides a `mr.bob <http://mrbob.readthedocs.org/en/latest/>`_ template to generate packages for Plone projects.
+``bobtemplates.cs`` provides a `mr.bob <http://mrbob.readthedocs.org/en/latest/>`_ template to generate packages for Plone projects using our customizations.
 
 
 Features
@@ -41,19 +41,8 @@ Package created with ``bobtemplates.cs`` use the current best-practices when cre
 Provided templates
 ------------------
 
-- addon
-- theme_package
 - buildout
 
-
-Provided subtemplates
----------------------
-
-These templates are meant to be used inside a package which was created by the addon template.
-
-- theme
-- content_type
-- vocabulary
 
 
 Compatibility
@@ -68,8 +57,6 @@ Documentation
 =============
 
 Full documentation for end users can be found in the "docs" folder.
-
-It is also available online at http://docs.plone.org/develop/addons/bobtemplates.cs/bobtemplates.cs/docs/
 
 Installation
 ============
@@ -127,13 +114,12 @@ See `the documentation of mr.bob <http://mrbob.readthedocs.org/en/latest/>`_  fo
 Contribute
 ==========
 
-- Issue Tracker: https://github.com/plone/bobtemplates.cs/issues
-- Source Code: https://github.com/plone/bobtemplates.cs
-- Documentation: http://docs.plone.org/develop/addons/bobtemplates.cs/bobtemplates.cs/docs/
+- Issue Tracker: https://github.com/codesyntax/bobtemplates.cs/issues
+- Source Code: https://github.com/codesyntax/bobtemplates.cs
+- Documentation:
 
 
 Support
 =======
 
 If you are having issues, please let us know.
-We have a Gitter channel here: `plone/bobtemplates.cs <https://gitter.im/plone/bobtemplates.cs>`_
