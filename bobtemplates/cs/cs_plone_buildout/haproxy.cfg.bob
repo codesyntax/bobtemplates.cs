@@ -1,0 +1,26 @@
+[buildout]
+parts =
+    facts
+    haproxy-build
+    haproxy-conf
+
+[ports]
+haproxy = {{{haproxy_port_number}}}
+
+[facts]
+recipe = isotoma.recipe.facts
+
+[haproxy-build]
+recipe = plone.recipe.haproxy
+target = generic
+url = http://www.haproxy.org/download/1.4/src/haproxy-1.4.26.tar.gz
+
+[haproxy-conf]
+recipe = collective.recipe.template[genshi]
+input = ${buildout:directory}/templates/haproxy.tpl
+output = ${buildout:directory}/etc/haproxy.conf
+maxconn = 24000
+ulimit-n = 65536
+user = ${facts:user.name}
+group = ${facts:user.name}
+bind = 127.0.0.1:${ports:haproxy}
