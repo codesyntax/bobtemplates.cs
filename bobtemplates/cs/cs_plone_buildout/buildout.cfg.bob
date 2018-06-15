@@ -6,6 +6,8 @@ extensions =
 
 show-picked-versions = true
 
+index = https://pypi.org/simple
+
 parts +=
     checkinterval
     instance
