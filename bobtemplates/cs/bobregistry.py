@@ -6,6 +6,8 @@ class RegEntry(object):
         self.template = ''
         self.plonecli_alias = ''
         self.depend_on = None
+        self.deprecated = False
+        self.info = ''
 
 
 def cs_plone_buildout():
