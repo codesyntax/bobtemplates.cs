@@ -6,17 +6,13 @@
     :target: https://coveralls.io/github/codesyntax/bobtemplates.cs?branch=master
     :alt: Coveralls
 
-.. image:: https://img.shields.io/pypi/dm/bobtemplates.cs.svg
-    :target: https://pypi.python.org/pypi/bobtemplates.cs/
-    :alt: Downloads
-
 .. image:: https://img.shields.io/pypi/v/bobtemplates.cs.svg
     :target: https://pypi.python.org/pypi/bobtemplates.cs/
     :alt: Latest Version
 
-.. image:: https://img.shields.io/pypi/status/bobtemplates.cs.svg
-    :target: https://pypi.python.org/pypi/bobtemplates.cs/
-    :alt: Egg Status
+.. image:: https://readthedocs.org/projects/pymipago/badge/?version=latest
+        :target: https://pymipago.readthedocs.io/en/latest/?badge=latest
+        :alt: Documentation Status
 
 .. image:: https://img.shields.io/pypi/l/bobtemplates.cs.svg
     :target: https://pypi.python.org/pypi/bobtemplates.cs/
