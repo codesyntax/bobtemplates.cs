@@ -54,12 +54,7 @@ setup(
     extras_require={},
     entry_points={
         'mrbob_templates': [
-            #'plone_addon = bobtemplates.plone.bobregistry:plone_addon',
             'cs_plone_buildout = bobtemplates.cs.bobregistry:cs_plone_buildout',  # NOQA E501
-            #'plone_theme_package = bobtemplates.plone.bobregistry:plone_theme_package',  # NOQA E501
-            #'plone_content_type = bobtemplates.plone.bobregistry:plone_content_type',  # NOQA E501
-            #'plone_theme = bobtemplates.plone.bobregistry:plone_theme',
-            #'plone_vocabulary = bobtemplates.plone.bobregistry:plone_vocabulary',  # NOQA E501
         ],
     },
 )
