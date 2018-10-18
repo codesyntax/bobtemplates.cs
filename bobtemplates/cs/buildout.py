@@ -13,7 +13,6 @@ def prepare_renderer(configurator):
     configurator.variables['varnish_port_number'] = zope_port_number + 30
 
 
-
 def post_renderer(configurator):
     """"""
     pass
