@@ -54,6 +54,10 @@ meld3 = 1.0.2
 cs.recipe.checkinterval = 1.0
 jarn.checkinterval = 1.0
 
+# Update version. The standard creates the following error:
+# TypeError: 'Version' object has no attribute '__getitem__'
+plone.recipe.zope2instance = 4.4.1
+
 # Custom egg versions
 fancycompleter = 0.8
 pdbpp = 0.9.2
