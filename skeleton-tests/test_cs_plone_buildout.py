@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from base import dummy_contextmanager
-from base import file_exists
 from base import generate_answers_ini
 
 import glob
@@ -11,42 +10,55 @@ import subprocess
 
 base_files = [
     '.editorconfig',
-    'setup.py',
-    'setup.cfg',
+    'requirements.txt',
+    'buildout.cfg',
+    'deployment.cfg',
     'bobtemplate.cfg',
+    'haproxy.cfg',
+    'services.cfg',
+    'varnish.cfg',
+    'webserver.cfg',
+    'templates/apache_complex.tpl',
+    'templates/apache_ssl.tpl',
+    'templates/apache.tpl',
+    'templates/haproxy.tpl',
+    'templates/logrotate.tpl',
+    'templates/nginx_complex.tpl',
+    'templates/nginx_ssl_http2.tpl',
+    'templates/nginx_ssl.tpl',
+    'templates/nginx.tpl',
 ]
 
 
-addon_files = [
-    'src/__init__.py',
-]
-
-
-def test_addon(tmpdir, capsys, config):
+def test_cs_plone_buildout(tmpdir, capsys, config):
     template = """[variables]
 package.description = Dummy package
 package.example = True
 package.git.init = True
+package.plone.version = 5.1.2
+package.buildout_zope_port_number = 8080
 
-author.name = The Plone Collective
-author.email = collective@plone.org
-author.github.user = collective
+author.name = CodeSyntax
+author.email = info@codesyntax.com
+author.github.user = codesyntax
 
 plone.version = {version}
 """.format(
-        version=config.version,
+        version=config.version
     )
     generate_answers_ini(tmpdir.strpath, template)
 
-    config.template = 'addon'
-    config.package_name = 'collective.task'
+    config.template = 'cs_plone_buildout'
+    config.package_name = 'project1'
 
     result = subprocess.call(
         [
             'mrbob',
-            '-O', config.package_name,
-            'bobtemplates.plone:' + config.template,
-            '--config', 'answers.ini',
+            '-O',
+            config.package_name,
+            'bobtemplates.cs:' + config.template,
+            '--config',
+            'answers.ini',
             '--non-interactive',
         ],
         cwd=tmpdir.strpath,
@@ -54,39 +66,20 @@ plone.version = {version}
     assert result == 0
 
     generated_files = glob.glob(
-        tmpdir.strpath + '/' + config.package_name + '/*',
+        tmpdir.strpath + '/' + config.package_name + '/*'
     )
     length = len(tmpdir.strpath + '/' + config.package_name + '/')
     generated_files = [f[length:] for f in generated_files]
-    required_files = base_files + addon_files
+    required_files = base_files
     assert required_files <= generated_files
 
-    base_path = tmpdir.strpath + '/' + config.package_name
-
-    assert file_exists(base_path, '/src/collective/task/configure.zcml')
-
-    wd = os.path.abspath(
-        os.path.join(tmpdir.strpath, config.package_name),
-    )
+    wd = os.path.abspath(os.path.join(tmpdir.strpath, config.package_name))
 
     with capsys.disabled() if config.verbose else dummy_contextmanager():
-        setup_virtualenv_result = subprocess.call(
-            [
-                'virtualenv',
-                '.',
-            ],
-            cwd=wd,
-        )
+        setup_virtualenv_result = subprocess.call(['virtualenv', '.'], cwd=wd)
         assert setup_virtualenv_result == 0
         install_buildout_result = subprocess.call(
-            [
-                './bin/pip',
-                'install',
-                '-U',
-                '-r',
-                'requirements.txt',
-            ],
-            cwd=wd,
+            ['./bin/pip', 'install', '-U', '-r', 'requirements.txt'], cwd=wd
         )
         assert install_buildout_result == 0
         annotate_result = subprocess.call(
@@ -99,32 +92,19 @@ plone.version = {version}
         )
         assert annotate_result == 0
         buildout_result = subprocess.call(
-            [
-                'bin/buildout',
-                'code-analysis:return-status-codes=True',
-            ],
-            cwd=wd,
+            ['bin/buildout', 'code-analysis:return-status-codes=True'], cwd=wd
         )
         assert buildout_result == 0
-        locale_result = subprocess.call(
-            [
-                './bin/update_locale',
-            ],
-            cwd=wd,
-        )
+        locale_result = subprocess.call(['./bin/update_locale'], cwd=wd)
         assert locale_result == 0
         try:
-            test_result = subprocess.check_output(
-                ['bin/test', '-v'],
-                cwd=wd,
-            )
+            test_result = subprocess.check_output(['bin/test', '-v'], cwd=wd)
             print(test_result)
         except subprocess.CalledProcessError as execinfo:
             print(execinfo.output)
             assert 'failed' in execinfo
 
         test__code_convention_result = subprocess.call(
-            ['bin/code-analysis'],
-            cwd=wd,
+            ['bin/code-analysis'], cwd=wd
         )
         assert test__code_convention_result == 0
