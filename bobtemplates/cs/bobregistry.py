@@ -29,14 +29,6 @@ def cs_plone_buildout():
 #     return reg
 
 
-# def plone_theme():
-#     reg = RegEntry()
-#     reg.template = 'bobtemplates.plone:theme'
-#     reg.plonecli_alias = 'theme'
-#     reg.depend_on = 'plone_addon'
-#     return reg
-
-
 # def plone_content_type():
 #     reg = RegEntry()
 #     reg.template = 'bobtemplates.plone:content_type'
