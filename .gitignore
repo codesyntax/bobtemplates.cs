@@ -23,6 +23,7 @@ pip-selfcheck.json
 .coverage*
 coverage.xml
 Vagrantfile
+.vscode/
 
 # excludes / This Files should go into version control
 !.editorconfig
