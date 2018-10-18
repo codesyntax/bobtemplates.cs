@@ -7,10 +7,9 @@ from setuptools import setup
 version = '1.0.0.dev0'
 
 
-long_description = '\n\n'.join([
-    open('README.rst').read(),
-    open('CHANGES.rst').read(),
-])
+long_description = '\n\n'.join(
+    [open('README.rst').read(), open('CHANGES.rst').read()]
+)
 
 
 setup(
@@ -38,23 +37,18 @@ setup(
     author='Mikel Larreategi',
     author_email='mlarreategi@codesyntax.com',
     url='https://github.com/codesyntax/bobtemplates.cs',
-    license='GPL version 2',
+    license='GPLv2',
     packages=find_packages(exclude=['ez_setup']),
     namespace_packages=['bobtemplates'],
     include_package_data=True,
     zip_safe=False,
-    install_requires=[
-        'setuptools',
-        'mr.bob',
-        'lxml',
-        'stringcase',
-    ],
+    install_requires=['setuptools', 'mr.bob', 'lxml', 'stringcase'],
     setup_requires=[],
     tests_require=[],
     extras_require={},
     entry_points={
         'mrbob_templates': [
-            'cs_plone_buildout = bobtemplates.cs.bobregistry:cs_plone_buildout',  # NOQA E501
-        ],
+            'cs_plone_buildout = bobtemplates.cs.bobregistry:cs_plone_buildout'  # NOQA E501
+        ]
     },
 )
