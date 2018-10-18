@@ -1,9 +1,9 @@
 
-.. image:: https://secure.travis-ci.org/plone/bobtemplates.cs.png?branch=master
-    :target: http://travis-ci.org/plone/bobtemplates.cs
+.. image:: https://secure.travis-ci.org/codesyntax/bobtemplates.cs.png?branch=master
+    :target: http://travis-ci.org/codesyntax/bobtemplates.cs
 
-.. image:: https://coveralls.io/repos/github/plone/bobtemplates.cs/badge.svg?branch=master
-    :target: https://coveralls.io/github/plone/bobtemplates.cs?branch=master
+.. image:: https://coveralls.io/repos/github/codesyntax/bobtemplates.cs/badge.svg?branch=master
+    :target: https://coveralls.io/github/codesyntax/bobtemplates.cs?branch=master
     :alt: Coveralls
 
 .. image:: https://img.shields.io/pypi/dm/bobtemplates.cs.svg
