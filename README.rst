@@ -37,8 +37,7 @@ Package created with ``bobtemplates.cs`` use the current best-practices when cre
 Provided templates
 ------------------
 
-- buildout
-
+- cs_plone_buildout
 
 
 Compatibility
@@ -53,58 +52,6 @@ Documentation
 =============
 
 Full documentation for end users can be found in the "docs" folder.
-
-Installation
-============
-
-Use in a buildout
------------------
-
-.. code-block:: ini
-
-    [buildout]
-    parts += mrbob
-
-    [mrbob]
-    recipe = zc.recipe.egg
-    eggs =
-        mr.bob
-        bobtemplates.cs
-
-
-This creates a mrbob-executable in your bin-directory.
-Call it from the ``src``-directory of your Plone project like this.
-
-.. code-block:: console
-
-    ../bin/mrbob bobtemplates.cs:addon -O collective.foo
-
-
-Installation in a virtualenv
-----------------------------
-
-You can also install ``bobtemplates.cs`` in a virtualenv.
-
-.. code-block:: console
-
-    pip install bobtemplates.cs
-
-With ``pip 6.0`` or newer ``mr.bob`` will automatically be installed as a dependency.
-If you still use a older version of pip you need install ``mr.bob`` before ``bobtemplates.cs``.
-
-.. code-block:: console
-
-    pip install mr.bob
-
-Now you can use it like this
-
-.. code-block:: console
-
-    mrbob bobtemplates.cs:addon -O collective.foo
-
-
-
-See `the documentation of mr.bob <http://mrbob.readthedocs.org/en/latest/>`_  for further information.
 
 
 Contribute

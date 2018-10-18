@@ -225,7 +225,7 @@ latex_documents = [
         master_doc,
         'bobtemplatescs.tex',
         u'bobtemplates.cs Documentation',
-        u'Plone Community',
+        u'Mikel Larreategi',
         'manual',
     )
 ]

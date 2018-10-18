@@ -6,6 +6,7 @@ Introduction
 
     intro
     buildout
+    plonecli
 
 
 ``bobtemplates.cs`` provides a `mr.bob <http://mrbob.readthedocs.org/en/latest/>`_ template to generate a buildout package for Plone projects.
