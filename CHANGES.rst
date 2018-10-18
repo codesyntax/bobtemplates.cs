@@ -4,6 +4,9 @@ Changelog
 1.0.0 (unreleased)
 ------------------
 
+- Improve docs
+  [erral]
+
 - More tests
   [erral]
 
