@@ -4,26 +4,7 @@ Introduction
 ..  toctree::
     :maxdepth: 1
 
-    intro
-    buildout
-    plonecli
-
-
 ``bobtemplates.cs`` provides a `mr.bob <http://mrbob.readthedocs.org/en/latest/>`_ template to generate a buildout package for Plone projects.
-
-To create a package like ``collective.myaddon``
-
-.. code-block:: shell
-
-    pip install bobtemplates.plone
-    mrbob -O collective.myaddon bobtemplates.plone:addon
-
-You can also create a package with nested namespace
-
-.. code-block:: shell
-
-    mrbob -O collective.foo.myaddon bobtemplates.plone:addon
-
 
 Installation
 ------------
@@ -74,6 +55,10 @@ Now you can use it like this
 
 See `mr.bob <http://mrbob.readthedocs.org/en/latest/>`_ documentation for further information.
 
+
+.. include:: intro.rst
+
+.. include:: plonecli.rst
 
 Indices and tables
 ==================
