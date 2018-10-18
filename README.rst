@@ -10,8 +10,8 @@
     :target: https://pypi.python.org/pypi/bobtemplates.cs/
     :alt: Latest Version
 
-.. image:: https://readthedocs.org/projects/pymipago/badge/?version=latest
-        :target: https://pymipago.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/bobtemplatescs/badge/?version=latest
+        :target: https://bobtemplatescs.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
 .. image:: https://img.shields.io/pypi/l/bobtemplates.cs.svg
