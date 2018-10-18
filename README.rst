@@ -22,13 +22,9 @@
     :target: https://pypi.python.org/pypi/bobtemplates.cs/
     :alt: License
 
-.. image:: https://badges.gitter.im/plone/bobtemplates.cs.svg
-    :target: https://gitter.im/plone/bobtemplates.cs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
-    :alt: Gitter channel
-
-==================
+================
 bobtemplates.cs
-==================
+================
 
 ``bobtemplates.cs`` provides a `mr.bob <http://mrbob.readthedocs.org/en/latest/>`_ template to generate packages for Plone projects using our customizations. This packages is based on `bobtemplates.plone <https://pypi.python.org/project/bobtemplates.plone`
 
