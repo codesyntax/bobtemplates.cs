@@ -74,10 +74,3 @@ after_success:
 after_script:
   - sh -e /etc/init.d/xvfb stop
 
-notifications:
-  email:
-    recipients:
-      - travis-reports@plone.com
-      - {author}
-    on_success: change
-    on_failure: change
