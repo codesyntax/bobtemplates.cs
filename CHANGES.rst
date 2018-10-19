@@ -4,6 +4,9 @@ Changelog
 1.0.0 (unreleased)
 ------------------
 
+- Link to starzel buildout for hotfix installation
+  [erral]
+
 - Improve docs
   [erral]
 
