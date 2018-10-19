@@ -22,6 +22,7 @@ parts +=
 # Change the number here to change the version of Plone being used
 extends =
     https://dist.plone.org/release/{{{buildout_plone_version}}}/versions.cfg
+    https://raw.githubusercontent.com/starzel/buildout/master/linkto/hotfixes/{{{buildout_plone_version}}}.cfg
     webserver.cfg
 
 
