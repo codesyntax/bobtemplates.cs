@@ -42,13 +42,20 @@ setup(
     namespace_packages=['bobtemplates'],
     include_package_data=True,
     zip_safe=False,
-    install_requires=['setuptools', 'mr.bob', 'lxml', 'stringcase'],
+    install_requires=[
+        'setuptools',
+        'mr.bob',
+        'bobtemplates.plone',
+        'lxml',
+        'stringcase',
+    ],
     setup_requires=[],
     tests_require=[],
     extras_require={},
     entry_points={
         'mrbob_templates': [
             'cs_plone_buildout = bobtemplates.cs.bobregistry:cs_plone_buildout'  # NOQA E501
+            'cs_migration = bobtemplates.cs.bobregistry:cs_migration'  # NOQA E501
         ]
     },
 )
