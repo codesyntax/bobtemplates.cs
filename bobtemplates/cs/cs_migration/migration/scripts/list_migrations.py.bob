@@ -1,0 +1,20 @@
+# -*- coding: utf-8 -*-
+from collective.transmogrifier.transmogrifier import configuration_registry
+from zope.site.hooks import setSite
+
+
+def list_migrations(self, *args):
+    for plonesite in self.objectValues('Plone Site'):
+        setSite(plonesite)
+        print('migration id               : migration title')
+        for conf_id in configuration_registry.listConfigurationIds():
+            if conf_id.startswith('{{{package.dottedname}}}'):
+                conf = configuration_registry.getConfiguration(conf_id)
+                title = conf['title']
+                id = conf_id
+                print('{} : {}'.format(id, title))
+        print("")
+        print(
+            'To run a migration, use the run_migration script, and pass the migration id parameter'
+        )
+        print("")
