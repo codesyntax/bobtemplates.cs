@@ -1,0 +1,139 @@
+[transmogrifier]
+pipeline =
+    jsonsource
+    pathfixer
+    pytzfixer
+    adjust_content_types
+    adjust_LRF_type
+    adjust_at_to_dx_fields
+    type_filter
+    references
+    remove_id
+    redirects
+    folders
+    constructor
+    uidupdater
+    schemaupdater
+    local_roles
+    owner
+    multilingual
+    workflow_history
+    reindexobject
+    logger
+    savepoint
+
+
+[breakpoint]
+blueprint = collective.transmogrifier.sections.breakpoint
+condition = python: item['_type'] != 'Topic' and not item['_type'].endswith('Criterion')
+
+[jsonsource]
+blueprint = collective.jsonmigrator.jsonsource
+path = /path/to/folder
+
+[type_filter]
+blueprint = collective.transmogrifier.sections.condition
+# Use a filter to migrate only given content-types
+# condition = python:item['_type'] in ['News Item', 'Event']
+condition = python:True
+
+
+[pathfixer]
+blueprint = plone.app.transmogrifier.pathfixer
+path-key = _path
+# Enter the original Plone site's id
+stripstring = /Plone/
+prependstring =
+
+
+[pytzfixer]
+blueprint = {{{package.dottedname}}}.blueprints.pytzfixer
+keys = regexp:(.*[Dd]ate)$
+
+
+[adjust_content_types]
+# Convert content-types and rename fields
+blueprint = ftw.blueprints.typefieldmapper
+mapping = python:{
+    'ATFolder': ('Folder', {}),
+    'SmartFolder': ('Collection', {}),
+    }
+
+[adjust_LRF_type]
+# Adjust the portal_type of a LanguageRootFolder in multilingual sites
+blueprint = ftw.blueprints.fieldmapper
+field-mapping = python:{
+    '_type': {
+        'destination': '_type',
+        'transform': lambda x: x['_path'] in ["eu", "es", "en", "fr"] and 'LRF' or x['_type']
+    }
+  }
+
+[adjust_at_to_dx_fields]
+blueprint = ftw.blueprints.fieldmapper
+field-mapping = python:{
+    'effectiveDate': {'destination': 'effective'},
+    'expirationDate': {'destination': 'expires'},
+    'excludeFromNav': {'destination': 'exclude_from_nav'},
+    'allowDiscussion': {'destination': 'allow_discussion'},
+    'startDate': {'destination': 'start'},
+    'endDate': {'destination': 'end'},
+    'eventUrl': {'destination': 'event_url'},
+    'contactName': {'destination': 'contact_name'},
+    'contactPhone': {'destination': 'contact_phone'},
+    'wholeDay': {'destination': 'whole_day'},
+    'openEnd': {'destination': 'open_end'},
+    '_uid': {'destination': 'plone.uuid'}}
+
+
+[references]
+blueprint = {{{package.dottedname}}}.blueprints.references
+keys = yourreferencefieldname
+
+[remove_id]
+blueprint = collective.transmogrifier.sections.manipulator
+delete = id
+
+[folders]
+blueprint = collective.transmogrifier.sections.folders
+folder-type = Folder
+
+[constructor]
+blueprint = collective.transmogrifier.sections.constructor
+type-key = _type
+path-key = _path
+
+[uidupdater]
+blueprint = plone.app.transmogrifier.uidupdater
+
+[schemaupdater]
+blueprint = transmogrify.dexterity.schemaupdater
+
+[local_roles]
+blueprint = collective.jsonmigrator.local_roles
+local-roles-key = _local_roles
+
+[owner]
+blueprint = collective.jsonmigrator.owner
+owner-key = _owner
+path-key = _path
+
+[multilingual]
+blueprint = ftw.blueprints.multilingual.linguaploneitemlinker
+
+[workflow]
+blueprint = plone.app.transmogrifier.workflowupdater
+
+[workflow_history]
+blueprint = collective.jsonmigrator.workflowhistory
+
+[reindexobject]
+blueprint = plone.app.transmogrifier.reindexobject
+
+[logger]
+blueprint = ftw.blueprints.logger
+print_out = python: '%s %s passed ' % (item.get('_type', ''), item.get('_path', ''))
+
+[savepoint]
+blueprint = collective.transmogrifier.sections.savepoint
+every = 1000

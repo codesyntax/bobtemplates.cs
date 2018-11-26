@@ -4,7 +4,8 @@ Changelog
 1.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add a subtemplate with migration utils.
+  [erral]
 
 
 1.0.0 (2018-10-19)
