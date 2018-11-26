@@ -4,8 +4,8 @@ Changelog
 1.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+- Minor fix.
+  [erral]
 
 1.1 (2018-11-26)
 ----------------
