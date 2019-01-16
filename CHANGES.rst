@@ -4,7 +4,8 @@ Changelog
 1.1.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Bugfixes in migration subtemplate.
+  [erral]
 
 
 1.1.1 (2018-11-26)
