@@ -9,7 +9,6 @@ pipeline =
     type_filter
     references
     remove_id
-    redirects
     folders
     constructor
     uidupdater
