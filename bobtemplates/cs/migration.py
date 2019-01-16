@@ -7,15 +7,15 @@ from bobtemplates.plone.base import update_file
 
 
 def _update_setup_py(configurator):
-    file_name = u'setup.py'
-    file_path = configurator.variables['package.root_folder'] + '/' + file_name
-    match_str = '-*- Extra requirements: -*-'
+    file_name = u"setup.py"
+    file_path = configurator.variables["package.root_folder"] + "/" + file_name
+    match_str = "-*- Extra requirements: -*-"
     insert_strings = [
-        'collective.transmogrifier',
-        'plone.app.transmogrifier',
-        'transmogrify.dexterity',
-        'ftw.blueprints',
-        'collective.jsonmigrator',
+        "collective.transmogrifier",
+        "plone.app.transmogrifier",
+        "transmogrify.dexterity",
+        "ftw.blueprints",
+        "collective.jsonmigrator",
     ]
     for insert_str in insert_strings:
         insert_str = "        '{0}',\n".format(insert_str)
@@ -23,44 +23,43 @@ def _update_setup_py(configurator):
             continue
         update_file(configurator, file_path, match_str, insert_str)
 
-    match_str = 'target = plone'
+    match_str = "target = plone"
     insert_strings = [
-        'run_migration = {0}.migration.scripts:run_migration'.format(
-            configurator.variables['package.dottedname']
+        "run_migration = {0}.migration.scripts:run_migration".format(
+            configurator.variables["package.dottedname"]
         ),
-        'list_migrations = {0}.migration.scripts:list_migrations'.format(
-            configurator.variables['package.dottedname']
+        "list_migrations = {0}.migration.scripts:list_migrations".format(
+            configurator.variables["package.dottedname"]
         ),
-        '[zopectl.command]',
+        "[zopectl.command]",
     ]
     for insert_str in insert_strings:
-        insert_str = '    {0}\n'.format(insert_str)
+        insert_str = "    {0}\n".format(insert_str)
         if is_string_in_file(configurator, file_path, insert_str):
             continue
         update_file(configurator, file_path, match_str, insert_str)
 
 
 def _update_configure_zcml(configurator):
-    file_name = u'configure.zcml'
-    file_path = configurator.variables['package_folder'] + '/' + file_name
+    file_name = u"configure.zcml"
+    file_path = configurator.variables["package_folder"] + "/" + file_name
 
-    match_str = '-*- extra stuff goes here -*-'
+    match_str = "-*- extra stuff goes here -*-"
     insert_str = """
-  <include package=".blueprints" />
-  <include package=".pipelines" />
+  <include package=".migration" />
 """
     update_file(configurator, file_path, match_str, insert_str)
 
 
 def prepare_renderer(configurator):
     configurator = base_prepare_renderer(configurator)
-    configurator.target_directory = configurator.variables['package_folder']
+    configurator.target_directory = configurator.variables["package_folder"]
 
 
 def post_renderer(configurator):
     _update_setup_py(configurator)
     _update_configure_zcml(configurator)
-    git_commit(configurator, 'Added migration')
+    git_commit(configurator, "Added migration")
 
 
 def set_global_vars(configurator):
