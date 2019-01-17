@@ -19,7 +19,7 @@ root_logger = logging.getLogger()
 root_logger.setLevel(logging.INFO)
 
 handler = logging.StreamHandler(sys.stdout)
-formatter = logging.Formatter('%(asctime)s %(levelname)s %(name)s %(message)s')
+formatter = logging.Formatter("%(asctime)s %(levelname)s %(name)s %(message)s")
 handler.setFormatter(formatter)
 root_logger.addHandler(handler)
 
@@ -40,7 +40,7 @@ def run_migration(self, *args):
     call = args[0]
     if len(call) > 2:
         pipeline_id = call[2]
-        for plonesite in self.objectValues('Plone Site'):
+        for plonesite in self.objectValues("Plone Site"):
             setSite(plonesite)
             plonesite = spoofRequest(plonesite)
             if pipeline_id in configuration_registry.listConfigurationIds():
@@ -48,13 +48,13 @@ def run_migration(self, *args):
                 overrides = {}
                 if len(call) >= 4:
                     json_path = call[3]
-                    overrides['jsonsource'] = {'path': json_path}
+                    overrides["jsonsource"] = {"path": json_path}
 
                 transmogrifier(pipeline_id, **overrides)
                 transaction.commit()
-                print('All set!')
+                print("All set!")
             else:
-                print('This migration id is invalid.')
+                print("This migration id is invalid.")
 
     else:
-        print('You need to tell me the migration id to run')
+        print("You need to tell me the migration id to run")
