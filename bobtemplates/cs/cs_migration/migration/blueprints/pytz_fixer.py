@@ -28,13 +28,10 @@ class TimezoneFixerSection(object):
     implements(ISection)
 
     def __init__(self, transmogrifier, name, options, previous):
-        keys = options.get('keys') or 'regexp:(.*[Dd]ate)$'
+        keys = options.get("keys") or "regexp:(.*[Dd]ate)$"
         self.keys = Matcher(*keys.splitlines())
         self.condition = Condition(
-            options.get('condition', 'python:True'),
-            transmogrifier,
-            name,
-            options,
+            options.get("condition", "python:True"), transmogrifier, name, options
         )
         self.previous = previous
 
@@ -45,21 +42,17 @@ class TimezoneFixerSection(object):
                     match = self.keys(key)[1]
                     if match:
                         oldvalue = item[key]
-                        if 'GMT+' in item[key]:
-                            item[key] = item[key].replace(
-                                ' GMT+', ' Etc/GMT-'
-                            )  # noqa
-                        elif 'GMT-' in item[key]:
-                            item[key] = item[key].replace(
-                                ' GMT-', ' Etc/GMT+'
-                            )  # noqa
-                        elif 'GMT' in item[key]:
-                            item[key] = item[key].replace(' GMT', ' Etc/GMT')
+                        if "GMT+" in item[key]:
+                            item[key] = item[key].replace(" GMT+", " Etc/GMT-")  # noqa
+                        elif "GMT-" in item[key]:
+                            item[key] = item[key].replace(" GMT-", " Etc/GMT+")  # noqa
+                        elif "GMT" in item[key]:
+                            item[key] = item[key].replace(" GMT", " Etc/GMT")
 
                         newvalue = item[key]
                         if oldvalue != newvalue:
                             logger.info(
-                                'pytz_fixer: field: {}, oldvalue {} newvalue {}'.format(  # noqa
+                                "pytz_fixer: field: {}, oldvalue {} newvalue {}".format(  # noqa
                                     key, oldvalue, newvalue
                                 )
                             )

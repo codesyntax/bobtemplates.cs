@@ -18,14 +18,14 @@ class References(object):
         self.previous = previous
         self.context = transmogrifier.context
         self.deferred_references = {}
-        self.reference_fields = options.get('keys') or 'regexp:(.*[Dd]ate)$'
+        self.reference_fields = options.get("keys") or "regexp:(.*[Dd]ate)$"
 
     def __iter__(self):
         for item in self.previous:
             for fieldname in self.reference_fields:
-                if item.get(fieldname, ''):
+                if item.get(fieldname, ""):
                     references = self.deferred_references.get(fieldname, [])
-                    references.append((item['_path'], item[fieldname]))
+                    references.append((item["_path"], item[fieldname]))
                     self.deferred_references[fieldname] = references
 
             yield item
@@ -35,9 +35,7 @@ class References(object):
             for path, uid in references:
                 items = []
                 try:
-                    referencer_object = self.context.restrictedTraverse(
-                        str(path)
-                    )
+                    referencer_object = self.context.restrictedTraverse(str(path))
                 except KeyError:
                     continue
 
