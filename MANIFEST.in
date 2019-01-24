@@ -4,3 +4,7 @@ graft docs
 global-exclude *pyc
 global-exclude tmp
 global-exclude .tox
+include *.GPL
+include *.txt
+include tox.ini
+
