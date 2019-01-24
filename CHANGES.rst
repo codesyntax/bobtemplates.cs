@@ -4,7 +4,8 @@ Changelog
 1.1.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Minor fixes in template registration.
+  [erral]
 
 
 1.1.2 (2019-01-16)
