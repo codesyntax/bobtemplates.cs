@@ -54,8 +54,8 @@ setup(
     extras_require={},
     entry_points={
         'mrbob_templates': [
-            'cs_plone_buildout=bobtemplates.cs.bobregistry:cs_plone_buildout'  # NOQA E501
-            'cs_migration=bobtemplates.cs.bobregistry:cs_migration'  # NOQA E501
+            'cs_plone_buildout=bobtemplates.cs.bobregistry:cs_plone_buildout',  # NOQA E501
+            'cs_migration=bobtemplates.cs.bobregistry:cs_migration',  # NOQA E501
         ]
     },
 )
