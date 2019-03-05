@@ -9,7 +9,6 @@ show-picked-versions = true
 index = https://pypi.org/simple
 
 parts +=
-    checkinterval
     instance
 #    instance2
 #    instance3
@@ -50,10 +49,6 @@ supervisor = 3.3.1
 collective.recipe.supervisor = 0.20
 superlance = 0.14
 meld3 = 1.0.2
-
-# Calculate Zope's checkinterval
-cs.recipe.checkinterval = 1.0
-jarn.checkinterval = 1.0
 
 # Update version. The standard creates the following error:
 # TypeError: 'Version' object has no attribute '__getitem__'
@@ -110,9 +105,6 @@ edit-server-name =
 # Set the port-number of the instance used to edit.
 zope-edit-port =
 
-[checkinterval]
-recipe = cs.recipe.checkinterval
-
 [instance]
 recipe = plone.recipe.zope2instance
 user = admin:admin
@@ -120,8 +112,6 @@ http-address = ${ports:instance}
 debug-mode = on
 verbose-security = on
 blob-storage = ${buildout:directory}/var/blobstorage
-
-python-check-interval = ${checkinterval:value}
 
 shared-blob = on
 zeo-client = True
