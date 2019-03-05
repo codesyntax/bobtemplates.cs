@@ -103,6 +103,8 @@ zope-edit-port =
 
 [instance]
 recipe = plone.recipe.zope2instance
+# Disable if you are using python 2
+wsgi = on
 user = admin:admin
 http-address = ${ports:instance}
 debug-mode = on
