@@ -4,7 +4,14 @@ Changelog
 1.1.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Enable WSGI
+  [erral]
+
+- Update pinnings
+  [erral]
+
+- Remove checkinterval calculation.
+  [erral]
 
 
 1.1.4 (2019-01-24)
