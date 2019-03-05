@@ -45,14 +45,10 @@ zcml =
 setuptools = 40.4.3
 zc.buildout = 2.12.2
 # Supervisor versions
-supervisor = 3.3.1
+supervisor = 3.3.5
 collective.recipe.supervisor = 0.20
 superlance = 0.14
 meld3 = 1.0.2
-
-# Update version. The standard creates the following error:
-# TypeError: 'Version' object has no attribute '__getitem__'
-plone.recipe.zope2instance = 4.4.1
 
 # Custom egg versions
 fancycompleter = 0.8
