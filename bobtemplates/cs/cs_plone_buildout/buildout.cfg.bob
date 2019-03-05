@@ -127,7 +127,7 @@ environment-vars =
    # Add here the languages of this site
     zope_i18n_compile_mo_files true
     TZ Europe/Madrid
-    PYTHON_EGG_CACHE = ${buildout:directory}/var/.python-eggs
+    PYTHON_EGG_CACHE ${buildout:directory}/var/.python-eggs
 
 # Do not add zcml here
 # for consistence-sake, please add them in the zcml
