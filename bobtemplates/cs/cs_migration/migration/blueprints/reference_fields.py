@@ -4,15 +4,15 @@ from collective.transmogrifier.interfaces import ISectionBlueprint
 from z3c.relationfield import RelationValue
 from zope.component import getUtility
 from zope.event import notify
-from zope.interface import classProvides
-from zope.interface import implements
+from zope.interface import implementer
+from zope.interface import provider
 from zope.intid.interfaces import IIntIds
 from zope.lifecycleevent import ObjectModifiedEvent
 
 
+@provider(ISectionBlueprint)
+@implementer(ISection)
 class References(object):
-    classProvides(ISectionBlueprint)
-    implements(ISection)
 
     def __init__(self, transmogrifier, name, options, previous):
         self.previous = previous

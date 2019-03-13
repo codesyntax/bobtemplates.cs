@@ -9,8 +9,8 @@ from collective.transmogrifier.interfaces import ISection
 from collective.transmogrifier.interfaces import ISectionBlueprint
 from collective.transmogrifier.utils import Condition
 from collective.transmogrifier.utils import Matcher
-from zope.interface import classProvides
-from zope.interface import implements
+from zope.interface import implementer
+from zope.interface import provider
 
 import logging
 
@@ -18,14 +18,14 @@ import logging
 logger = logging.getLogger(__name__)
 
 
+@provider(ISectionBlueprint)
+@implementer(ISection)
 class TimezoneFixerSection(object):
     """
     Fixes UnknownTimeZoneError: (UnknownTimeZoneError('GMT+1',),
     by replacing the (unknown) GMT+x timezone with Etc/GMT+x
     """
 
-    classProvides(ISectionBlueprint)
-    implements(ISection)
 
     def __init__(self, transmogrifier, name, options, previous):
         keys = options.get("keys") or "regexp:(.*[Dd]ate)$"
