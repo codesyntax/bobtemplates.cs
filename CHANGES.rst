@@ -11,6 +11,7 @@ Changelog
   [erral]
 
 - Remove checkinterval calculation.
+- Python3 compatibility fixes
   [erral]
 
 
