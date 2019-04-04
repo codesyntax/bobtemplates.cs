@@ -130,6 +130,7 @@ environment-vars =
     zope_i18n_compile_mo_files true
     TZ Europe/Madrid
     PYTHON_EGG_CACHE ${buildout:directory}/var/.python-eggs
+    DIAZO_ALWAYS_CACHE_RULES 1
 
 # Do not add zcml here
 # for consistence-sake, please add them in the zcml
