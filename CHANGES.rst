@@ -4,6 +4,9 @@ Changelog
 1.1.5 (unreleased)
 ------------------
 
+- Always cache Diazo rules in development
+  [erral]
+
 - Enable WSGI
   [erral]
 
