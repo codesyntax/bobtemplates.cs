@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.1.5 (unreleased)
-------------------
+1.2 (2019-04-04)
+----------------
 
 - Always cache Diazo rules in development
   [erral]
