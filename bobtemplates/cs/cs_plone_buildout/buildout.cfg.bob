@@ -175,7 +175,7 @@ programs =
 #   23 zope${buildout:projectname}${instance4:http-address} (autorestart=true) ${buildout:directory}/bin/instance4 [console] true
 #   24 zope${buildout:projectname}${instance5:http-address} (autorestart=true) ${buildout:directory}/bin/instance5 [console] true
 #   30 haproxy${buildout:projectname}${ports:haproxy} ${buildout:directory}/bin/haproxy [ -f ${buildout:directory}/etc/haproxy.conf -db ]
-#   40 varnish${buildout:projectname}${ports:varnish} ${varnish:daemon} [ -f ${varnish:config} -n ${buildout:directory}/var -s malloc,1G -a ${varnish:bind} -F ]
+#   40 varnish${buildout:projectname}${ports:varnish} (autorestart=true) ${buildout:directory}/bin/varnish-script true
 
 
 eventlisteners =
