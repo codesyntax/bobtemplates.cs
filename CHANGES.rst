@@ -4,7 +4,8 @@ Changelog
 1.3 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- update varnish control script in supervisor.
+  [erral]
 
 
 1.2 (2019-04-04)
