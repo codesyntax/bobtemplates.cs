@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.3 (unreleased)
-----------------
+1.2.1 (2019-05-15)
+------------------
 
 - Remove 'products' directory registration for buildout recipe
   [erral]
