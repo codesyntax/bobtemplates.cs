@@ -4,6 +4,9 @@ Changelog
 1.3 (unreleased)
 ----------------
 
+- Remove 'products' directory registration for buildout recipe
+  [erral]
+
 - update varnish control script in supervisor.
   [erral]
 
