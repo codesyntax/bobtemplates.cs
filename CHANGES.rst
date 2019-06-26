@@ -4,7 +4,8 @@ Changelog
 1.2.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Update supervisor version pins.
+  [erral]
 
 
 1.2.1 (2019-05-15)
