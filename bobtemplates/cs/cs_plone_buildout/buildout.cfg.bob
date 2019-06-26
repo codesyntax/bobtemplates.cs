@@ -45,9 +45,9 @@ zcml =
 setuptools = 40.4.3
 zc.buildout = 2.12.2
 # Supervisor versions
-supervisor = 3.3.5
+supervisor = 4.0.3
 collective.recipe.supervisor = 0.20
-superlance = 0.14
+superlance = 1.0.0
 meld3 = 1.0.2
 
 # Custom egg versions
