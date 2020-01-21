@@ -44,7 +44,6 @@ install:
 before_script:
   - export DISPLAY=:99.0
   - export VERBOSE=true
-  - sh -e /etc/init.d/xvfb start
 
 script:
   - travis_retry tox
