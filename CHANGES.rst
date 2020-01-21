@@ -4,6 +4,9 @@ Changelog
 1.2.2 (unreleased)
 ------------------
 
+- Use `+=` in buildout part eggs link to make hotfix installation from external versions file work
+  [erral]
+
 - Update supervisor version pins.
   [erral]
 
