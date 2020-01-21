@@ -34,7 +34,7 @@ find-links =
     https://dist.plone.org/thirdparty
 
 # Add additional eggs needed for your project here
-eggs =
+eggs +=
     pdbpp
     Pillow
 
