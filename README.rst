@@ -1,6 +1,6 @@
 
-.. image:: https://secure.travis-ci.org/codesyntax/bobtemplates.cs.png?branch=master
-    :target: http://travis-ci.org/codesyntax/bobtemplates.cs
+.. image:: https://travis-ci.com/codesyntax/bobtemplates.cs.svg?branch=master
+    :target: http://travis-ci.com/codesyntax/bobtemplates.cs
 
 .. image:: https://coveralls.io/repos/github/codesyntax/bobtemplates.cs/badge.svg?branch=master
     :target: https://coveralls.io/github/codesyntax/bobtemplates.cs?branch=master
