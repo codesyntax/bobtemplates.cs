@@ -4,6 +4,9 @@ Changelog
 1.2.3 (unreleased)
 ------------------
 
+- Update haproxy
+  [erral]
+
 - Use new Travis.
   [erral]
 

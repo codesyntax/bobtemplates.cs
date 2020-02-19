@@ -1,8 +1,8 @@
 global
   log 127.0.0.1 local6
-  maxconn  ${parts['haproxy-conf'].maxconn}
-  user     ${parts['haproxy-conf'].user}
-  group    ${parts['haproxy-conf'].group}
+  maxconn  ${options.maxconn}
+  user     ${options.user}
+  group    ${options.group}
   daemon
   nbproc 1
 
@@ -15,6 +15,7 @@ defaults
 
   # Remove requests from the queue if people press stop button
   option abortonclose
+  option forwardfor
 
   # Try to connect this many times on failure
   retries 3
@@ -36,16 +37,16 @@ defaults
   stats realm Haproxy\ statistics
 
 frontend zopecluster
-  bind ${parts['haproxy-conf'].bind}
+  bind ${options.bind}
   default_backend zope
-  capture cookie __ac len 10
+  # capture cookie __ac len 10
   option httplog
   log 127.0.0.1 local6
 
 # Load balancing over the zope instances
 backend zope
-  # Use Zope's __ac cookie as a basis for session stickiness if present.
-  appsession __ac len 32 timeout 1d
+  # Use IP based stickiness
+  stick-table type ip size 1m expire 10s store http_req_rate(10s)
 
   # Otherwise add a cookie called "serverid" for maintaining session stickiness.
   # This cookie lasts until the client's browser closes, and is invisible to Zope.
@@ -62,11 +63,8 @@ backend zope
   # "maxconn" is how many connections can be sent to the server at once
   # "check" enables health checks
   # "rise 1" means consider Zope up after 1 successful health check
-  {% with items=[0,1,2,3,4]; port={{{buildout_zope_port_number}}} %}
+  {% with items=options['backends'].split('\n')%}
     {% for item in items %}
-      {% with num=port+item %}
-    server  instance$item 127.0.0.1:$num cookie p010$item check maxconn 2 rise 1
-      {% end %}
+      server  instance${items.index(item)} ${item} cookie p010${items.index(item)} check maxconn 2 rise 1
     {% end %}
   {% end %}
-
