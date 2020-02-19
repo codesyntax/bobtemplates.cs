@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.2.3 (unreleased)
+1.2.3 (2020-02-19)
 ------------------
 
 - Update haproxy
