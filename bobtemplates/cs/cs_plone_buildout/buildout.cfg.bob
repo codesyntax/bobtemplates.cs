@@ -176,17 +176,12 @@ programs =
 
 
 eventlisteners =
-   Memmon${buildout:projectname}${instance:http-address} TICK_60 ${buildout:bin-directory}/memmon [-p zope${buildout:projectname}${instance:http-address}=700MB -m support@codesyntax.com]
-   MailMe${buildout:projectname}${instance:http-address} PROCESS_STATE_EXITED ${buildout:bin-directory}/crashmail [-p zope${buildout:projectname}${instance:http-address} -m support@codesyntax.com]
+   Memmon${buildout:projectname}${instance:http-address} TICK_60 ${buildout:bin-directory}/memmon [-p zope${buildout:projectname}${instance:http-address}=700MB]
 #  Enable if needed
-#   Memmon${buildout:projectname}${instance2:http-address} TICK_60 ${buildout:bin-directory}/memmon [-p zope${buildout:projectname}${instance2:http-address}=700MB -m support@codesyntax.com]
-#   Memmon${buildout:projectname}${instance3:http-address} TICK_60 ${buildout:bin-directory}/memmon [-p zope${buildout:projectname}${instance3:http-address}=700MB -m support@codesyntax.com]
-#   Memmon${buildout:projectname}${instance4:http-address} TICK_60 ${buildout:bin-directory}/memmon [-p zope${buildout:projectname}${instance4:http-address}=700MB -m support@codesyntax.com]
-#   Memmon${buildout:projectname}${instance5:http-address} TICK_60 ${buildout:bin-directory}/memmon [-p zope${buildout:projectname}${instance5:http-address}=700MB -m support@codesyntax.com]
-#   MailMe${buildout:projectname}${instance2:http-address} PROCESS_STATE_EXITED ${buildout:bin-directory}/crashmail [-p zope${buildout:projectname}${instance2:http-address} -m support@codesyntax.com]
-#   MailMe${buildout:projectname}${instance3:http-address} PROCESS_STATE_EXITED ${buildout:bin-directory}/crashmail [-p zope${buildout:projectname}${instance3:http-address} -m support@codesyntax.com]
-#   MailMe${buildout:projectname}${instance4:http-address} PROCESS_STATE_EXITED ${buildout:bin-directory}/crashmail [-p zope${buildout:projectname}${instance4:http-address} -m support@codesyntax.com]
-#   MailMe${buildout:projectname}${instance5:http-address} PROCESS_STATE_EXITED ${buildout:bin-directory}/crashmail [-p zope${buildout:projectname}${instance5:http-address} -m support@codesyntax.com]
+#   Memmon${buildout:projectname}${instance2:http-address} TICK_60 ${buildout:bin-directory}/memmon [-p zope${buildout:projectname}${instance2:http-address}=700MB]
+#   Memmon${buildout:projectname}${instance3:http-address} TICK_60 ${buildout:bin-directory}/memmon [-p zope${buildout:projectname}${instance3:http-address}=700MB]
+#   Memmon${buildout:projectname}${instance4:http-address} TICK_60 ${buildout:bin-directory}/memmon [-p zope${buildout:projectname}${instance4:http-address}=700MB]
+#   Memmon${buildout:projectname}${instance5:http-address} TICK_60 ${buildout:bin-directory}/memmon [-p zope${buildout:projectname}${instance5:http-address}=700MB]
 
 
 [omelette]
