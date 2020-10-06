@@ -37,6 +37,7 @@ find-links =
 eggs +=
     pdbpp
     Pillow
+    experimental.gracefulblobmissing
 
 # Add here which products' zcml files will be loaded
 zcml =
@@ -59,6 +60,12 @@ pyrepl = 0.8.4
 # Required by:
 # pdbpp==0.9.2
 wmctrl = 0.3
+
+experimental.gracefulblobmissing = 0.5.0
+
+# Required by:
+# experimental.gracefulblobmissing==0.5.0
+sh = 1.14.0
 
 
 # Port configuration
