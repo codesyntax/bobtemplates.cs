@@ -4,7 +4,11 @@ Changelog
 1.2.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Default to Plone 5.2.2
+  [erral]
+
+- Update version pins.
+  [erral]
 
 
 1.2.3 (2020-02-19)
