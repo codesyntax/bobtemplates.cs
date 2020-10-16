@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.2.4 (unreleased)
+1.2.4 (2020-10-16)
 ------------------
 
 - Default to Plone 5.2.2
