@@ -62,6 +62,7 @@ wmctrl = 0.3
 experimental.gracefulblobmissing = 0.5.0
 sh = 1.14.0
 
+plone.restapi = 6.15.0
 
 # Port configuration
 [ports]
