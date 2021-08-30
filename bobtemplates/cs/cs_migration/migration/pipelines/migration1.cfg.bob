@@ -13,6 +13,8 @@ pipeline =
     constructor
     uidupdater
     schemaupdater
+    users
+    groups
     local_roles
     owner
     multilingual
@@ -88,6 +90,13 @@ field-mapping = python:{
 [references]
 blueprint = {{{package.dottedname}}}.blueprints.references
 keys = yourreferencefieldname
+
+[users]
+blueprint = {{{package.dottedname}}}.blueprints.importusers
+
+[groups]
+blueprint = {{{package.dottedname}}}.blueprints.groups
+
 
 [remove_id]
 blueprint = collective.transmogrifier.sections.manipulator
