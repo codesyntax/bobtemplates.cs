@@ -8,5 +8,11 @@
   <utility component=".pytz_fixer.TimezoneFixerSection"
     name="{{{package.dottedname}}}.blueprints.pytzfixer" />
 
+  <utility component=".user_and_group_import.ImportUsers"
+    name="{{{package.dottedname}}}.blueprints.users" />
+
+  <utility component=".user_and_group_import.Groups"
+    name="{{{package.dottedname}}}.blueprints.groups" />
+
 
 </configure>

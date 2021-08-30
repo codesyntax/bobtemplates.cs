@@ -4,7 +4,12 @@ Changelog
 1.2.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add new users and groups importer blueprints to the cs_migration subtemplate
+  [erral]
+
+
+- update version pins
+  [erral]
 
 
 1.2.4 (2020-10-16)
