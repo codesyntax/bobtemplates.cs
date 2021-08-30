@@ -44,8 +44,8 @@ zcml =
 
 [versions]
 # setuptools & zc.buildout keep in sync with requirements.txt
-setuptools = 40.4.3
-zc.buildout = 2.12.2
+setuptools = 42.0.2
+zc.buildout = 2.13.3
 
 # Supervisor versions
 collective.recipe.supervisor = 1.0.0
