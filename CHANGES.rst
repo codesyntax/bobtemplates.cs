@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.2.5 (unreleased)
-------------------
+1.3 (2021-08-30)
+----------------
 
 - Merge pull request #2 from codesyntax/user-migration [Mikel Larreategi <mlarreategi@codesyntax.com>]
 
