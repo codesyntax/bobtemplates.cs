@@ -4,28 +4,8 @@ Changelog
 1.3 (2021-08-30)
 ----------------
 
-- Merge pull request #2 from codesyntax/user-migration [Mikel Larreategi <mlarreategi@codesyntax.com>]
-
--  [Mikel Larreategi <mlarreategi@codesyntax.com>]
-
-- User migration blueprint and new version pins [Mikel Larreategi <mlarreategi@codesyntax.com>]
-
-- changelog [Mikel Larreategi <mlarreategi@codesyntax.com>]
-
-- update version pins [Mikel Larreategi <mlarreategi@codesyntax.com>]
-
-- update zc.buildout and setuptools version pins [Mikel Larreategi <mlarreategi@codesyntax.com>]
-
-- new user and group importer blueprints [Mikel Larreategi <mlarreategi@codesyntax.com>]
-
-- remove restapi version pin [Mikel Larreategi <mlarreategi@codesyntax.com>]
-
--  [Mikel Larreategi <mlarreategi@codesyntax.com>]
-
-- [ci skip] [Mikel Larreategi <mlarreategi@codesyntax.com>]
-
+- User migration blueprint and new version pins
   [erral]
-
 
 - update version pins
   [erral]
