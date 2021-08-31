@@ -1,12 +1,18 @@
 Changelog
 =========
 
-1.2.5 (unreleased)
+1.3.1 (UNRELEASED)
 ------------------
 
-- Add new users and groups importer blueprints to the cs_migration subtemplate
+- Fix user import blueprint (fullname)
   [erral]
 
+
+1.3 (2021-08-30)
+----------------
+
+- User migration blueprint and new version pins
+  [erral]
 
 - update version pins
   [erral]

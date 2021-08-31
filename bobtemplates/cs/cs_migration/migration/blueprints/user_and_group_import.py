@@ -64,7 +64,7 @@ class ImportUsers(object):
                         user = api.user.create(
                             username=person,
                             email=data.get("email", ""),
-                            fullname=data.get("fullname", ""),
+                            properties={"fullname": data.get("fullname", "")},
                         )
                         api.user.grant_roles(username=person, roles=roles)
                     except ValueError as e:
