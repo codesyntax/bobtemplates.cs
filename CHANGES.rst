@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.3.1 (UNRELEASED)
+1.3.1 (2021-08-31)
 ------------------
 
 - Fix user import blueprint (fullname)
