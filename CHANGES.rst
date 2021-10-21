@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.3.2 (unreleased)
-------------------
+1.4 (2021-10-21)
+----------------
 
 - add egg option to the zeo part, to be able to do conflict-resolution [Mikel Larreategi <mlarreategi@codesyntax.com>]
 
