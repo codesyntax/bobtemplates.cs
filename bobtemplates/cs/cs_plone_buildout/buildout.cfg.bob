@@ -142,6 +142,7 @@ zcml =
 [zeo]
 recipe = plone.recipe.zeoserver
 zeo-address = ${ports:zeo}
+eggs = ${buildout:eggs}
 
 #[instance2]
 #<= instance
