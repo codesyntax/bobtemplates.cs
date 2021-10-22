@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.5 (unreleased)
-----------------
+1.4.1 (2021-10-22)
+------------------
 
 - change the section that eggs come from: Zope2 and Plone are define in instance, so they should come from there [Mikel Larreategi <mlarreategi@codesyntax.com>]
 
