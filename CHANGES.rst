@@ -4,7 +4,8 @@ Changelog
 1.5 (unreleased)
 ----------------
 
-- Add volto-backend template
+- fix RST [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
   [erral]
 
 
