@@ -16,6 +16,12 @@ def cs_plone_buildout():
     reg.plonecli_alias = "cs_plone_buildout"
     return reg
 
+def cs_plone_volto_buildout():
+    reg = RegEntry()
+    reg.template = "bobtemplates.cs:cs_plone_volto_buildout"
+    reg.plonecli_alias = "cs_plone_volto_buildout"
+    return reg
+
 
 def cs_migration():
     reg = RegEntry()

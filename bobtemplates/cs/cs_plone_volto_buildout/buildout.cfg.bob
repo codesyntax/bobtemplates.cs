@@ -1,0 +1,213 @@
+[buildout]
+projectname = {{{project}}}
+
+extensions =
+    mr.developer
+
+show-picked-versions = true
+
+index = https://pypi.org/simple
+
+parts +=
+    instance
+#    instance2
+#    instance3
+#    instance4
+#    instance5
+    zeo
+    omelette
+    zopepy
+
+# Change the number here to change the version of Plone being used
+extends =
+    https://dist.plone.org/release/{{{buildout_plone_version}}}/versions.cfg
+    https://raw.githubusercontent.com/starzel/buildout/master/linkto/hotfixes/{{{buildout_plone_version}}}.cfg
+    webserver.cfg
+
+
+versions = versions
+
+# Add additional egg download sources here. dist.plone.org contains archives
+# of Plone packages.
+find-links =
+    https://dist.plone.org/release/{{{buildout_plone_version}}}
+    https://dist.plone.org/thirdparty
+
+# Add additional eggs needed for your project here
+eggs +=
+    pdbpp
+    Pillow
+    experimental.gracefulblobmissing
+    plone.volto
+    plone.rest
+
+# Add here which products' zcml files will be loaded
+zcml =
+
+[versions]
+# setuptools & zc.buildout keep in sync with requirements.txt
+setuptools = 42.0.2
+zc.buildout = 2.13.3
+
+# Supervisor versions
+collective.recipe.supervisor = 1.0.0
+superlance = 1.0.0
+supervisor = 4.2.2
+
+# pdbpp
+fancycompleter = 0.9.1
+pdbpp = 0.10.3
+pyrepl = 0.9.0
+wmctrl = 0.4
+
+# experimental.gracefulblobmissing
+experimental.gracefulblobmissing = 0.5.0
+sh = 1.14.2
+
+# plone addons for volto
+plone.restapi = 8.21.2
+plone.volto = 4.0.0a3
+plone.rest=2.0.0a4
+plone.app.vocabularies=4.3.0
+
+# Port configuration
+[ports]
+instance = {{{buildout_zope_port_number}}}
+instance2 = {{{zope_instance2_port_number}}}
+instance3 = {{{zope_instance3_port_number}}}
+instance4 = {{{zope_instance4_port_number}}}
+instance5 = {{{zope_instance5_port_number}}}
+zeo = {{{zeo_port_number}}}
+haproxy = {{{haproxy_port_number}}}
+varnish = {{{varnish_port_number}}}
+
+
+# Webserver configuration. It will be used to generate apache and nginx configuration
+# To use them, symlink the appropiate file to your webserver configuration directory
+[configuration]
+# Set here the primary domain name to this instance
+server-name =
+# ONLY NEEDED BY APACHE Set the servername of the principal redirect virtualhost
+server-name-principal-redirect =
+# Set here the secondary domain names to this instance that will be redirected to the primary one
+additional-names =
+# Only used to create SSL configuration
+# Set here the absolute path to the SSL certificate file
+ssl-certificate-path =
+# Set here the absolute path to the Private key file
+ssl-private-key-path =
+# ONLY NEEDED BY APACHE: Set here the absolute path to the SSL certificate chain file
+ssl-certificate-chain-path =
+# ONLY NEEDED BY APACHE: Set here the absolute path to the CA SSL certificate
+ssl-ca-certificate-path =
+# Standard defaults, only change if you want to store the files somewhere else
+apache-log-path = /var/log/apache2
+nginx-log-path = /var/log/nginx
+# Only used in the complex setup where all logged-in traffic
+# is directed to a given Zope instance
+# Set the domain name to be used by logged-in users.
+edit-server-name =
+# Set the port-number of the instance used to edit.
+zope-edit-port =
+
+[instance]
+recipe = plone.recipe.zope2instance
+# Disable if you are using python 2
+wsgi = on
+user = admin:admin
+http-address = ${ports:instance}
+debug-mode = on
+verbose-security = on
+blob-storage = ${buildout:directory}/var/blobstorage
+
+shared-blob = on
+zeo-client = True
+zeo-address = ${ports:zeo}
+
+# Do not add eggs here
+# for consistence-sake, please add them in the eggs
+# option for buildout part. Only Zope and Plone eggs
+# must be listed here. Thank you.
+eggs =
+    Zope2
+    Plone
+    ${buildout:eggs}
+
+
+environment-vars =
+   # Add here the languages of this site
+    zope_i18n_compile_mo_files true
+    TZ Europe/Madrid
+    PYTHON_EGG_CACHE ${buildout:directory}/var/.python-eggs
+    DIAZO_ALWAYS_CACHE_RULES 1
+
+# Do not add zcml here
+# for consistence-sake, please add them in the zcml
+# option for buildout part. Thank you.
+zcml =
+    ${buildout:zcml}
+
+[zeo]
+recipe = plone.recipe.zeoserver
+zeo-address = ${ports:zeo}
+eggs = ${instance:eggs}
+
+#[instance2]
+#<= instance
+#http-address = ${ports:instance2}
+#
+#[instance3]
+#<= instance
+#http-address = ${ports:instance3}
+#
+#[instance4]
+#<= instance
+#http-address = ${ports:instance4}
+#
+#[instance5]
+#<= instance
+#http-address = ${ports:instance5}
+
+[supervisor]
+recipe = collective.recipe.supervisor
+http-socket = unix
+file = ${buildout:directory}/var/supervisord.sock
+plugins = superlance
+programs =
+   10 zeo${buildout:projectname} (autorestart=true) ${buildout:directory}/bin/zeo [fg] true
+   20 zope${buildout:projectname}${instance:http-address} (autorestart=true) ${buildout:directory}/bin/instance [console] true
+   30 volto${buildout:projectname} (autorestart=true) node [${buildout:directory}/frontend/build/server.js] ${buildout:directory}/frontend/ true
+#  Enable if needed
+#   21 zope${buildout:projectname}${instance2:http-address} (autorestart=true) ${buildout:directory}/bin/instance2 [console] true
+#   22 zope${buildout:projectname}${instance3:http-address} (autorestart=true) ${buildout:directory}/bin/instance3 [console] true
+#   23 zope${buildout:projectname}${instance4:http-address} (autorestart=true) ${buildout:directory}/bin/instance4 [console] true
+#   24 zope${buildout:projectname}${instance5:http-address} (autorestart=true) ${buildout:directory}/bin/instance5 [console] true
+#   30 haproxy${buildout:projectname}${ports:haproxy} ${buildout:directory}/bin/haproxy [ -f ${buildout:directory}/etc/haproxy.conf -db ]
+#   40 varnish${buildout:projectname}${ports:varnish} (autorestart=true) ${buildout:directory}/bin/varnish-script true
+
+
+eventlisteners =
+   Memmon${buildout:projectname}${instance:http-address} TICK_60 ${buildout:bin-directory}/memmon [-p zope${buildout:projectname}${instance:http-address}=700MB]
+#  Enable if needed
+#   Memmon${buildout:projectname}${instance2:http-address} TICK_60 ${buildout:bin-directory}/memmon [-p zope${buildout:projectname}${instance2:http-address}=700MB]
+#   Memmon${buildout:projectname}${instance3:http-address} TICK_60 ${buildout:bin-directory}/memmon [-p zope${buildout:projectname}${instance3:http-address}=700MB]
+#   Memmon${buildout:projectname}${instance4:http-address} TICK_60 ${buildout:bin-directory}/memmon [-p zope${buildout:projectname}${instance4:http-address}=700MB]
+#   Memmon${buildout:projectname}${instance5:http-address} TICK_60 ${buildout:bin-directory}/memmon [-p zope${buildout:projectname}${instance5:http-address}=700MB]
+
+
+[omelette]
+recipe = collective.recipe.omelette
+eggs = ${instance:eggs}
+
+
+[zopepy]
+recipe = zc.recipe.egg
+eggs = ${instance:eggs}
+interpreter = zopepy
+scripts = zopepy
+
+# Add here your develop eggs
+# you can activate them using bin/develop
+# for documentation about using git or svn urls, check
+# https://pypi.org/project/mr.developer
+[sources]

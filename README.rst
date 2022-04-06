@@ -33,8 +33,19 @@ Package created with ``bobtemplates.cs`` use the current best-practices when cre
 Provided templates
 ------------------
 
+- cs_plone_volto_buildout
 - cs_plone_buildout
 - cs_migration
+
+cs_plone_volto_buildout
+~~~~~~~~~~~~~~~~~
+
+This template provides a ready-to-use buildout template for Plone backends for Volto. It asks for a Plone version
+and configures the buildout with it.
+
+The generated buildout provides configuration files for nginx and Apache, haproxy, varnish and logrotate.
+
+It also creates cron jobs to pack your database and to restart the services when the server is rebooted.
 
 cs_plone_buildout
 ~~~~~~~~~~~~~~~~~

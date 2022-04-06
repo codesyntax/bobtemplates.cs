@@ -22,13 +22,14 @@ The templates provided by us at bobtemplates.cs are also available on plonecli, 
     - portlet
     - theme
     - cs_plone_buildout
+    - cs_plone_volto_buildout
 
 
 And use it:
 
 .. code-block:: shell
 
-   $ plonecli create cs_plone_buildout myproject
+   $ plonecli create cs_plone_volto_buildout myproject
 
 
 
