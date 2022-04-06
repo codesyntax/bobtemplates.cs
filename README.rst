@@ -38,7 +38,7 @@ Provided templates
 - cs_migration
 
 cs_plone_volto_buildout
-~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
 
 This template provides a ready-to-use buildout template for Plone backends for Volto. It asks for a Plone version
 and configures the buildout with it.
