@@ -4,7 +4,8 @@ Changelog
 1.5 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Add volto-backend template
+  [erral]
 
 
 1.4.1 (2021-10-22)
