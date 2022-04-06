@@ -1,0 +1,43 @@
+[buildout]
+parts +=
+    facts
+    haproxy-build
+    haproxy-conf
+
+auto-checkout +=
+    plone.recipe.haproxy
+
+[versions]
+collective.recipe.environment = 1.1.0
+collective.recipe.template = 2.1
+
+[ports]
+haproxy = {{{haproxy_port_number}}}
+
+[facts]
+recipe = isotoma.recipe.facts
+
+[haproxy-build]
+recipe = plone.recipe.haproxy
+target = generic
+url = http://www.haproxy.org/download/2.1/src/haproxy-2.1.3.tar.gz
+
+[haproxy-conf]
+recipe = collective.recipe.template[genshi]
+input = ${buildout:directory}/templates/haproxy.tpl
+output = ${buildout:directory}/etc/haproxy.conf
+maxconn = 24000
+ulimit-n = 65536
+user = ${facts:user.name}
+group = ${facts:user.name}
+bind = 127.0.0.1:${ports:haproxy}
+
+backends =
+    127.0.0.1:${ports:instance}
+    127.0.0.1:${ports:instance2}
+    127.0.0.1:${ports:instance3}
+    127.0.0.1:${ports:instance4}
+    127.0.0.1:${ports:instance5}
+
+[sources]
+plone.recipe.haproxy = git git@github.com:plone/plone.recipe.haproxy branch=python3
