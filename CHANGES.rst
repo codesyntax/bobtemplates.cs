@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.5 (unreleased)
+1.5 (2022-04-06)
 ----------------
 
 - fix RST [Mikel Larreategi <mlarreategi@codesyntax.com>]
