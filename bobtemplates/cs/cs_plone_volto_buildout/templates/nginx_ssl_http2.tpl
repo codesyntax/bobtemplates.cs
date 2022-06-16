@@ -43,6 +43,22 @@ server {
 
     resolver 8.8.8.8;
 
+    # Content-Security-Policy
+    #add_header Content-Security-Policy "default-src 'self' https://* data: ; img-src https://* data: 'self' 'unsafe-inline'; child-src 'none'; base-uri 'self'; form
+
+    # Permissions-Policy
+    add_header Permissions-Policy "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), encrypted-media=(), fullscreen=(self), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), sync-xhr=(self), usb=(), speaker=(), vr=()";
+
+    # Referrer-Policy
+    add_header Referrer-Policy same-origin;
+
+    # Extra Headers
+    add_header X-Content-Type-Options nosniff;
+    add_header X-Frame-Options SAMEORIGIN always;
+
+    # Block pages from loading when they detect reflected XSS attacks
+    add_header X-XSS-Protection "1; mode=block";
+
     server_name ${configuration:server-name} ;
     access_log ${configuration:nginx-log-path}/${configuration:server-name}.log;
     error_log  ${configuration:nginx-log-path}/${configuration:server-name}.error.log;

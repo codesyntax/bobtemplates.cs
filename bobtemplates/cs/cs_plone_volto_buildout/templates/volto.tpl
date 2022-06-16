@@ -22,8 +22,9 @@ server {
     # certs sent to the client in SERVER HELLO are concatenated in ssl_certificate
     ssl_certificate ${configuration:ssl-certificate-path};
     ssl_certificate_key ${configuration:ssl-private-key-path};
-    ssl_session_timeout 5m;
-    ssl_session_cache shared:SSL:50m;
+    ssl_session_timeout 1d;
+    ssl_session_cache shared:MozSSL:10m;  # about 40000 sessions
+    ssl_session_tickets off;
 
     # Diffie-Hellman parameter for DHE ciphersuites, recommended 2048 bits
     # Generate this file running as root the following command:
@@ -31,15 +32,35 @@ server {
     #  $ openssl dhparam -out /etc/nginx/ssl/dhparam.pem 2048
     ssl_dhparam /etc/nginx/ssl/dhparam.pem;
 
-    # modern configuration. tweak to your needs.
-    ssl_protocols TLSv1.2 TLSv1.1 TLSv1;
-    ssl_ciphers 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!3DES:!MD5:!PSK';
-    ssl_prefer_server_ciphers on;
+    # intermediate configuration
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
+    ssl_prefer_server_ciphers off;
 
-    # HSTS (ngx_http_headers_module is required) (15768000 seconds = 6 months)
-    add_header Strict-Transport-Security max-age=15768000;
+    # HSTS (ngx_http_headers_module is required) (63072000 seconds)
+    add_header Strict-Transport-Security "max-age=63072000" always;
+
+    # OCSP stapling
+    ssl_stapling on;
+    ssl_stapling_verify on;
 
     resolver 8.8.8.8;
+
+    # Content-Security-Policy
+    #add_header Content-Security-Policy "default-src 'self' https://* data: ; img-src https://* data: 'self' 'unsafe-inline'; child-src 'none'; base-uri 'self'; form
+
+    # Permissions-Policy
+    add_header Permissions-Policy "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), encrypted-media=(), fullscreen=(self), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), sync-xhr=(self), usb=(), speaker=(), vr=()";
+
+    # Referrer-Policy
+    add_header Referrer-Policy same-origin;
+
+    # Extra Headers
+    add_header X-Content-Type-Options nosniff;
+    add_header X-Frame-Options SAMEORIGIN always;
+
+    # Block pages from loading when they detect reflected XSS attacks
+    add_header X-XSS-Protection "1; mode=block";
 
     server_name ${configuration:server-name} ;
     access_log ${configuration:nginx-log-path}/${configuration:server-name}.log;
