@@ -4,7 +4,20 @@ Changelog
 1.6 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- update logrotate path [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- set default Plone version to 5.2.9 [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- set default security policies in nginx [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- Update nginx_ssl_http2.tpl [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- Update nginx_ssl_http2.tpl [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+-  [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
+- [ci skip] [Mikel Larreategi <mlarreategi@codesyntax.com>]
+
 
 
 1.5 (2022-04-06)
