@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.6 (unreleased)
+1.6 (2022-09-22)
 ----------------
 
 - update logrotate path [Mikel Larreategi <mlarreategi@codesyntax.com>]
