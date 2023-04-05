@@ -4,7 +4,7 @@ Changelog
 1.7 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Update versions to Plone 6 [erral]
 
 
 1.6 (2022-09-22)
