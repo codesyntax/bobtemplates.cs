@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.7 (unreleased)
+1.7 (2023-04-05)
 ----------------
 
 - Update versions to Plone 6 [erral]
