@@ -9,6 +9,7 @@ show-picked-versions = true
 index = https://pypi.org/simple
 
 parts +=
+    vscode
     instance
 #    instance2
 #    instance3
@@ -43,6 +44,10 @@ eggs +=
 
 # Add here which products' zcml files will be loaded
 zcml =
+
+[vscode]
+recipe = collective.recipe.vscode
+eggs = ${instance:eggs}
 
 [versions]
 # setuptools & zc.buildout keep in sync with requirements.txt
