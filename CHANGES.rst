@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.8 (unreleased)
+1.8 (2024-02-13)
 ----------------
 
 - Add OIDC plugin configuration [erral]
