@@ -41,6 +41,8 @@ eggs +=
     experimental.gracefulblobmissing
     plone.volto
     plone.rest
+    codesyntax.login
+    collective.regenv
 
 # Add here which products' zcml files will be loaded
 zcml =
@@ -146,6 +148,7 @@ environment-vars =
     TZ Europe/Madrid
     PYTHON_EGG_CACHE ${buildout:directory}/var/.python-eggs
     DIAZO_ALWAYS_CACHE_RULES 1
+    PLONE_REGISTRY_YAML ${buildout:directory}/plone.yml
 
 # Do not add zcml here
 # for consistence-sake, please add them in the zcml
