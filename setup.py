@@ -4,7 +4,7 @@ from setuptools import find_packages
 from setuptools import setup
 
 
-version = '1.9.1'
+version = '1.9.2.dev0'
 
 
 long_description = '\n\n'.join(
