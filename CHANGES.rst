@@ -4,8 +4,7 @@ Changelog
 1.9 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+- Repackage [erral]
 
 1.8 (2024-02-13)
 ----------------
