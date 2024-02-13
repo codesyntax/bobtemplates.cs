@@ -4,7 +4,11 @@ Changelog
 1.8 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Add OIDC plugin configuration [erral]
+
+- Add ZEO egg in the ZEO part [erral]
+
+- Add vscode recipe [erral]
 
 
 1.7 (2023-04-05)
