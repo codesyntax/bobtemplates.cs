@@ -1,0 +1,20 @@
+/Plone/acl_users/oidc:
+  issuer: "https://accounts.google.com"
+  client_id: ""
+  client_secret: ""
+  redirect_uris:
+    - /api/acl_users/oidc/callback
+  use_session_data_manager: False
+  create_ticket: True
+  create_restapi_ticket: True
+  create_user: True
+  create_groups: True
+  user_property_as_groupid: hd
+  scope:
+    - profile
+    - email
+    - phone
+  use_pkce: True
+  use_deprecated_redirect_uri_for_logout: False
+  use_modified_openid_schema: False
+  user_property_as_userid: sub
