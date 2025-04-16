@@ -70,6 +70,13 @@ server {
 
     client_max_body_size 20M;
 
+    location /++resource++zmi/ {
+        rewrite ^/(.*)$ /VirtualHostBase/https/${configuration:server-name}:443/Plone/VirtualHostRoot/$1 break;
+        # Directly Zope
+        proxy_pass http://${buildout:projectname}plone;
+
+    }
+
     location / {
         rewrite ^/(.*)$ /VirtualHostBase/https/${configuration:server-name}:443/Plone/VirtualHostRoot/$1 break;
         # Directly Zope
